@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+// Redirigir el directorio de compilación fuera de OneDrive para evitar bloqueos
+layout.buildDirectory.set(file("C:/TempBuilds/simpleTestAutomation/build"))
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Cucumber
+    implementation 'io.cucumber:cucumber-java:7.14.0'
+    implementation 'io.cucumber:cucumber-junit:7.14.0'
+
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:6.1.0'
+
+    // JUnit 4 requerido por Cucumber
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnit()
+    failOnNoDiscoveredTests = false
+}
